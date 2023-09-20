@@ -10,13 +10,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:"/foods",
-        element:<Foods></Foods>
-      }
-    ]
+        path: "/foods",
+        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c"),
+        element: <Foods></Foods>,
+      },
+    ],
   },
 ]);
 

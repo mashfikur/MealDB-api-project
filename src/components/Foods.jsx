@@ -4,11 +4,10 @@ import Food from "./Food";
 const Foods = () => {
   const foods = useLoaderData();
   const foodsArray=foods.meals
-  console.log(foodsArray)
   return (
     <div className="text-2xl my-16 text-center font-medium">
-      <p> Foods : {foodsArray.length} </p>
-      <div className="grid grid-cols-4 gap-6">
+      <p className="font-medium" > TOTAL FOODS : {foodsArray.length} </p>
+      <div className="grid grid-cols-4 mt-6 gap-6">
         {
           foodsArray.map(food=><Food key={food.idMeal} food={food} ></Food>)  
         }

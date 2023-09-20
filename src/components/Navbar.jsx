@@ -26,16 +26,18 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-            <NavLink to="/" >Home</NavLink>
-            <NavLink to="/foods" >Foods</NavLink>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/foods">Foods</NavLink>
             </ul>
           </div>
-          <a className=" capitalize font-semibold text-3xl">Food E-Stall</a>
+          <a className=" capitalize font-light text-amber-700  text-3xl">
+           [ Food E-Stall ] 
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-6 font-semibold text-lg">
-            <NavLink to="/" >Home</NavLink>
-            <NavLink to="/foods" >Foods</NavLink>
+          <ul className="menu menu-horizontal space-x-6 text-amber-700 font-semibold text-lg">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/foods">Foods</NavLink>
           </ul>
         </div>
         <div className="navbar-end">

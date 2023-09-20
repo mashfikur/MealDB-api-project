@@ -5,8 +5,8 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
-      <div className="container mx-auto">
+    <div className="flex flex-col h-screen">
+      <div className="container mx-auto flex-grow">
         <Navbar></Navbar>
         <Outlet></Outlet>
       </div>

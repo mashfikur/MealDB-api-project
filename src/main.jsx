@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Foods from "./components/Foods.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
+import FoodDetails from "./components/FoodDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,9 +15,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/foods",
-        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c"),
+        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a"),
         element: <Foods></Foods>,
       },
+      {
+        path:"/foods/:foodID",
+        loader:({params})=>fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.foodID}`),
+        element:<FoodDetails></FoodDetails>
+      }
     ],
   },
 ]);

@@ -1,22 +1,23 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const FoodDetails = () => {
     const details=useLoaderData()
     const foodDetail=details.meals[0]
     const {strMeal,strMealThumb,strCategory,strArea,strTags,strInstructions,strYoutube}=foodDetail
-    console.log(strYoutube)
+    const ytLink=strYoutube.replace('watch','embed')
 
-    const navigate=useNavigate()
-
-
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
 
     return (
         <div>
             <div className="my-4" >
                 <div className=" flex items-center">
-                <Link  >
-                    <button onClick={()=>navigate(-1)} className="btn btn-neutral flex-0 " >go back</button>
+                <Link to={'/foods'} >
+                    <button  className="btn btn-neutral flex-0 " >go back</button>
                 </Link>
 
               <h3 className="text-center font-bold text-5xl drop-shadow-lg mb-12 flex-1">{strMeal} </h3>                  
@@ -41,7 +42,7 @@ const FoodDetails = () => {
 
                     <div>
                         <h3 className="text-2xl font-light mb-2">Demo</h3>
-                        <iframe className="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/mrjnQal3S1A?si=t-yOB8rfaDRNQi3x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe className="mx-auto" width="560" height="315" src={ytLink} title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
 
 

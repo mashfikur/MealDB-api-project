@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Foods from "./components/Foods.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import FoodDetails from "./components/FoodDetails.jsx";
+import ScrollToTop from "react-scroll-to-top";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/foods",
-        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a"),
+        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c"),
         element: <Foods></Foods>,
       },
       {

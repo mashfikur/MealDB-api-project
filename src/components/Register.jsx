@@ -1,9 +1,28 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
 
+    const {createUser}=useContext(AuthContext)
+
     const handleRegister=(e) => {
         e.preventDefault()
+        const email=e.target.email.value
+        const password=e.target.password.value
+
+
+        // creating user
+        createUser(email,password)
+        .then((result) => {
+            console.log(result.user)
+            toast.success("User Created Successfully")
+        })
+        .catch((error) => {
+            console.error(error.message);
+        })
+
     }
 
   return (
@@ -23,6 +42,7 @@ const Register = () => {
                   <input
                     type="text"
                     name="name"
+                    required
                     placeholder="name"
                     className="input input-bordered"
                   />
@@ -34,6 +54,7 @@ const Register = () => {
                   <input
                     type="email"
                     name="email"
+                    required
                     placeholder="email"
                     className="input input-bordered"
                   />
@@ -45,6 +66,7 @@ const Register = () => {
                   <input
                     type="password"
                     name="password"
+                    required
                     placeholder="password"
                     className="input input-bordered"
                   />

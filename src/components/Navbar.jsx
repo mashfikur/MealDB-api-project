@@ -39,6 +39,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal flex items-center space-x-6 text-amber-700 font-semibold text-base">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/foods">Foods</NavLink>
+            <NavLink to="/categories">Categories</NavLink>
           </ul>
         </div>
         <div className="navbar-end">

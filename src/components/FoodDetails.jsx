@@ -13,7 +13,7 @@ const FoodDetails = () => {
     },[])
 
     return (
-        <div>
+        <div className="container mx-auto">
             <div className="my-4" >
                 <div className=" flex items-center">
                 <Link to={'/foods'} >

@@ -10,7 +10,7 @@ const Features = () => {
           carbon footprint associated with transporting food long distances.
         </p>
       </Feature>
-      <Feature reverse={true} imageLink={'/src/assets/feature-2.svg'} title={'Fresh Food Always On Your Reach'} >
+      <Feature reverse={true} imageLink={'/src/assets/feature-2.svg'} title={'AnyTime, AnyThing, You Want'} >
         <p>
           Choosing fresh, locally sourced food supports local farmers and the
           community. It helps strengthen the local economy and reduces the

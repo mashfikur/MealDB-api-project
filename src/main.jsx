@@ -8,6 +8,8 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import FoodDetails from "./components/FoodDetails.jsx";
 import Layout from "./components/Layout.jsx";
 import Categories from "./components/Categories.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,15 +48,25 @@ const router = createBrowserRouter([
         element: <FoodDetails></FoodDetails>,
       },
       {
-        path:"/categories",
-        element:<Categories></Categories>,
+        path: "/categories",
+        element: <Categories></Categories>,
         loader: async () => {
-          const res=await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
-          const data=await res.json()
+          const res = await fetch(
+            "https://www.themealdb.com/api/json/v1/1/categories.php"
+          );
+          const data = await res.json();
 
           return data;
-        }
-      }
+        },
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
     ],
   },
 ]);

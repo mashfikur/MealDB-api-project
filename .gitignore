@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# firebase configuration
+./src/firebase/firebase.config.js

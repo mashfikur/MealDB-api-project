@@ -6,23 +6,44 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Foods from "./components/Foods.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import FoodDetails from "./components/FoodDetails.jsx";
+import Layout from "./components/Layout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: <Layout></Layout>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
+        path: "/",
+        element: <App></App>,
+      },
+      {
         path: "/foods",
-        loader: ()=>fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c"),
+        loader: async () => {
+          const res = await fetch(
+            "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
+          );
+
+          const data = await res.json();
+
+          return data;
+        },
         element: <Foods></Foods>,
       },
       {
-        path:"/foods/:foodID",
-        loader:({params})=>fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.foodID}`),
-        element:<FoodDetails></FoodDetails>
-      }
+        path: "/foods/:foodID",
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.foodID}`
+          );
+
+          const data = await res.json();
+
+          return data;
+        },
+        element: <FoodDetails></FoodDetails>,
+      },
     ],
   },
 ]);

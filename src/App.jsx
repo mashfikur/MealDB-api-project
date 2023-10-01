@@ -1,9 +1,12 @@
 import "./App.css";
+import Banner from "./components/Banner";
+import Features from "./components/Features";
 
 function App() {
   return (
     <div>
-      <h3 className="text-center text-5xl">Welcome to our food website</h3>
+      <Banner></Banner>
+      <Features></Features>
     </div>
   );
 }

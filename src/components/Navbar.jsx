@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import '../components/styles/Navbar.css'
+import "../components/styles/Navbar.css";
 
 const Navbar = () => {
   return (
@@ -32,11 +32,11 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" capitalize font-light text-amber-700  text-3xl">
-           [ FooDictionary ] 
+            [ FooDictionary ]
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal flex items-center space-x-6 text-amber-700 font-semibold text-lg">
+          <ul className="menu menu-horizontal flex items-center space-x-6 text-amber-700 font-semibold text-base">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/foods">Foods</NavLink>
           </ul>

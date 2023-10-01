@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
@@ -6,17 +6,27 @@ import toast from "react-hot-toast";
 const Register = () => {
 
     const {createUser}=useContext(AuthContext)
+    const [errorState,setErrorState]=useState('')
 
     const handleRegister=(e) => {
         e.preventDefault()
         const email=e.target.email.value
         const password=e.target.password.value
 
+        // reseting our states
+        setErrorState('')
+
+        if(password.length<6){
+            setErrorState("Your Password Should be more than 6 charectars")
+            return;
+        }
+
 
         // creating user
         createUser(email,password)
         .then((result) => {
             console.log(result.user)
+            e.target.reset()
             toast.success("User Created Successfully")
         })
         .catch((error) => {
@@ -71,6 +81,7 @@ const Register = () => {
                     className="input input-bordered"
                   />
                 </div>
+                {errorState && <span className="font-semibold text-red-600" >{errorState}*</span>}
                 <div className="form-control mt-6">
                   <button className="btn btn-warning">Register</button>
                 </div>

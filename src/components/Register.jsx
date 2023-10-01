@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
@@ -12,6 +13,7 @@ const Register = () => {
         e.preventDefault()
         const email=e.target.email.value
         const password=e.target.password.value
+        const name = e.target.name.value
 
         // reseting our states
         setErrorState('')
@@ -27,7 +29,16 @@ const Register = () => {
         .then((result) => {
             console.log(result.user)
             e.target.reset()
-            toast.success("User Created Successfully")
+            
+            // updating users profile
+            updateProfile(result.user,{
+                displayName:name,
+            }).then(() => {
+                toast.success("User Created Successfully")
+            }).catch((error) => {
+                toast.error(`${error.message}`)
+            })
+
         })
         .catch((error) => {
             console.error(error.message);

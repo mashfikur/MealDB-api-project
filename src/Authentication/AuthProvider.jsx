@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import {  createUserWithEmailAndPassword } from "firebase/auth";
+import {  createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import PropTypes from 'prop-types'
 import auth from '../firebase/firebase.config'
 
@@ -15,8 +15,13 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
+    // signing in user
+    const userSignIn = (email,password) => {
+        return signInWithEmailAndPassword (auth,email,password)
+    }
+
     // storing information need to share globally
-    const info ={user,createUser}
+    const info ={user,createUser,userSignIn}
 
 
     return (

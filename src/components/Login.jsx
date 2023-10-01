@@ -1,8 +1,31 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
+
+    const [showError,setShowError]=useState('')
+    const {userSignIn}=useContext(AuthContext)
+
   const handleLogin = (e) => {
     e.preventDefault();
+    const email=e.target.email.value
+    const password=e.target.password.value
+
+    //reseting the error
+    setShowError('')
+
+    //signing in user
+    userSignIn(email,password)
+    .then((result) => {
+        console.log(result.user)
+        e.target.reset()
+        toast.success("Logged In Successfully")
+    })
+    .catch((error) => {
+        setShowError(error.message)
+    })
   };
 
   return (
@@ -37,6 +60,7 @@ const Login = () => {
                     className="input input-bordered"
                   />
                 </div>
+                {showError && <span className="font-semibold text-red-600">{showError}*</span>}
                 <div className="form-control mt-6">
                   <button className="btn btn-accent">Login</button>
                 </div>

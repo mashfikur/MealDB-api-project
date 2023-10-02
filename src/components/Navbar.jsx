@@ -5,7 +5,8 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { currentUser, userSignOut, setCurrentUser } = useContext(AuthContext);
+  const { currentUser, userSignOut, setCurrentUser, loading } =
+    useContext(AuthContext);
 
   const handleSignOut = () => {
     userSignOut()
@@ -59,7 +60,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          {currentUser ? (
+          {loading ? (
+            <span className="loading loading-spinner loading-lg"></span>
+          ) : currentUser ? (
             <>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

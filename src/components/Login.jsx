@@ -9,7 +9,7 @@ import { BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const [showError, setShowError] = useState("");
-  const { userSignIn ,signInWithGoogle } = useContext(AuthContext);
+  const { userSignIn ,signInWithGoogle,setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const emailRef = useRef();
@@ -38,6 +38,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
+        setLoading(false)
         toast.error(error.message);
       });
   };

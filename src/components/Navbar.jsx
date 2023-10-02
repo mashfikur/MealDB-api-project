@@ -1,12 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../components/styles/Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
+import { BsCart3 } from "react-icons/bs";
 
 const Navbar = () => {
   const { currentUser, userSignOut, setCurrentUser, loading } =
     useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     userSignOut()
@@ -64,6 +67,10 @@ const Navbar = () => {
             <span className="loading loading-spinner loading-lg"></span>
           ) : currentUser ? (
             <>
+              <BsCart3
+                onClick={() => navigate("/cart")}
+                className="text-xl cursor-pointer "
+              ></BsCart3>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">

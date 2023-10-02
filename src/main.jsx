@@ -11,6 +11,8 @@ import Categories from "./components/Categories.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import AuthProvider from "./Authentication/AuthProvider.jsx";
+import Cart from "./components/Cart.jsx";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +69,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/cart",
+        element: <PrivateRoute>
+          <Cart></Cart>
+        </PrivateRoute>,
       },
     ],
   },

@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import PropTypes from "prop-types";
@@ -31,6 +33,13 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  //google sign in
+  const googleProvider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
   //observing the current user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -38,6 +47,8 @@ const AuthProvider = ({ children }) => {
         setCurrentUser(user);
         setLoading(false);
         console.log(user);
+      }else{
+        setLoading(false)
       }
     });
 
@@ -52,6 +63,7 @@ const AuthProvider = ({ children }) => {
     loading,
     userSignOut,
     setCurrentUser,
+    signInWithGoogle,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;

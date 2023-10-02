@@ -9,7 +9,7 @@ import { BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const [showError, setShowError] = useState("");
-  const { userSignIn } = useContext(AuthContext);
+  const { userSignIn ,signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const emailRef = useRef();
@@ -68,6 +68,17 @@ const Login = () => {
       });
   };
 
+  const handleGoogleSignIn =() => {
+    signInWithGoogle()
+    .then(() => {
+      toast.success("Logged In Successfully")
+      navigate("/")
+    })
+    .catch((error) => {
+      toast.error(`${error.message}`)
+    })
+  }
+
   return (
     <div>
       <div className="hero min-h-[95vh] bg-green-200">
@@ -125,7 +136,7 @@ const Login = () => {
               </form>
               <div className="flex flex-col gap-4">
                 <div>
-                  <button className="btn capitalize  shadow-xl  w-full">
+                  <button onClick={handleGoogleSignIn} className="btn capitalize  shadow-xl  w-full">
                     {" "}
                     <FcGoogle className="text-xl"></FcGoogle> Sign in with
                     Google

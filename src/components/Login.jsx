@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -8,6 +8,7 @@ import auth from "../firebase/firebase.config";
 const Login = () => {
   const [showError, setShowError] = useState("");
   const { userSignIn } = useContext(AuthContext);
+  const navigate=useNavigate()
 
   const emailRef = useRef();
   const passRef = useRef();
@@ -32,6 +33,7 @@ const Login = () => {
         console.log(result.user);
         e.target.reset();
         toast.success("Logged In Successfully");
+        navigate("/")
       })
       .catch((error) => {
         toast.error(error.message);

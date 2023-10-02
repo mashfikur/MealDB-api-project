@@ -2,9 +2,21 @@ import { Link, NavLink } from "react-router-dom";
 import "../components/styles/Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { currentUser, loading } = useContext(AuthContext);
+  const { currentUser, userSignOut, setCurrentUser } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    userSignOut()
+      .then(() => {
+        setCurrentUser(null);
+        toast.success("Logged Out Successfully");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   return (
     <nav className="">
@@ -68,7 +80,12 @@ const Navbar = () => {
                   <li className="text-xl">{currentUser.displayName}</li>
                   <li>{currentUser.email}</li>
                   <li>
-                    <button className="btn btn-neutral btn-sm">Log out</button>
+                    <button
+                      onClick={handleSignOut}
+                      className="btn btn-neutral btn-sm"
+                    >
+                      Log out
+                    </button>
                   </li>
                 </ul>
               </div>

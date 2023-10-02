@@ -4,11 +4,13 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { FcGoogle } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const [showError, setShowError] = useState("");
   const { userSignIn } = useContext(AuthContext);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const emailRef = useRef();
   const passRef = useRef();
@@ -33,7 +35,7 @@ const Login = () => {
         console.log(result.user);
         e.target.reset();
         toast.success("Logged In Successfully");
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -55,14 +57,15 @@ const Login = () => {
     }
 
     // sending password reset link
-    sendPasswordResetEmail(auth,emailField)
-    .then(() => {
-      toast.success("Please check your email to update Password") 
-      emailRef.current.value="";
-      passRef.current.value="";
-    }).catch((error) => {
-      toast.error(`${error.message}`)
-    })
+    sendPasswordResetEmail(auth, emailField)
+      .then(() => {
+        toast.success("Please check your email to update Password");
+        emailRef.current.value = "";
+        passRef.current.value = "";
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
   };
 
   return (
@@ -116,12 +119,26 @@ const Login = () => {
                     {showError}*
                   </span>
                 )}
-                <div className="form-control mt-6">
+                <div className="form-control shadow-xl mt-6">
                   <button className="btn btn-accent">Login</button>
                 </div>
               </form>
-              <span className="font-semibold">
-                Already have an account ? Please{" "}
+              <div className="flex flex-col gap-4">
+                <div>
+                  <button className="btn capitalize  shadow-xl  w-full">
+                    {" "}
+                    <FcGoogle className="text-xl"></FcGoogle> Sign in with
+                    Google
+                  </button>
+                </div>
+                <div>
+                  <button className="btn capitalize  shadow-xl  w-full">
+                   <BsGithub className="text-xl" ></BsGithub> Sign in with Github
+                  </button>
+                </div>
+              </div>
+              <span className="font-semibold text-gray-500 mt-4 text-center">
+                New to this Website ? Please{" "}
                 <Link to="/register">
                   {" "}
                   <button className="btn btn-link p-0">Register</button>{" "}

@@ -5,7 +5,7 @@ const CategoryCard = ({ category }) => {
 
   return (
     <div className=" rounded-lg">
-      <div className="card rounded-md h-[30rem] bg-base-100 shadow-lg hover:drop-shadow-2xl duration-500">
+      <div className="card rounded-md min-h-[32rem] bg-base-100 shadow-lg hover:drop-shadow-2xl duration-500">
         <figure>
           <img className="w-[80%]" src={strCategoryThumb} alt="card" />
         </figure>

@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import "../components/styles/Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 const Navbar = () => {
+  const { currentUser, loading } = useContext(AuthContext);
+
   return (
     <nav className="">
       <div className="navbar bg-base-100">
@@ -43,8 +47,45 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link to="/register" className="btn btn-warning btn-outline font-semibold">Register</Link>
-          <Link to="/login" className="btn btn-warning font-semibold">Log In</Link>
+          {currentUser ? (
+            <>
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      src={
+                        currentUser.photoURL
+                          ? currentUser.photoURL
+                          : "https://i.ibb.co/bHYZB8H/user-placehoder.png"
+                      }
+                    />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-6 shadow bg-base-100 rounded-box font-semibold flex flex-col gap-4   text-center text-gray-400"
+                >
+                  <li className="text-xl">{currentUser.displayName}</li>
+                  <li>{currentUser.email}</li>
+                  <li>
+                    <button className="btn btn-neutral btn-sm">Log out</button>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/register"
+                className="btn btn-warning btn-outline font-semibold"
+              >
+                Register
+              </Link>
+              <Link to="/login" className="btn btn-warning font-semibold">
+                Log In
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

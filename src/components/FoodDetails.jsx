@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import PropTypes from "prop-types";
+import useMainContext from "../hooks/useMainContext";
 
 const FoodDetails = () => {
   const details = useLoaderData();
+  const {handleAddToCart}=useMainContext()
   const foodDetail = details.meals[0];
   const {
+    idMeal,
     strMeal,
     strMealThumb,
     strCategory,
@@ -14,7 +18,12 @@ const FoodDetails = () => {
     strYoutube,
   } = foodDetail;
   const ytLink = strYoutube.replace("watch", "embed");
-
+  const foodInfo = {
+    mealID: idMeal,
+    name: strMeal,
+    image: strMealThumb,
+    category: strCategory,
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,8 +41,11 @@ const FoodDetails = () => {
           </h3>
 
           <div>
-            <button className="btn btn-warning  font-semibold">
-              Add to Cart
+            <button
+              onClick={() => handleAddToCart(foodInfo)}
+              className="btn btn-warning  font-semibold"
+            >
+              Favourite
             </button>
           </div>
         </div>
@@ -77,7 +89,6 @@ const FoodDetails = () => {
                 src={ytLink}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
               ></iframe>
             </div>
           </div>
@@ -85,6 +96,10 @@ const FoodDetails = () => {
       </div>
     </div>
   );
+};
+
+FoodDetails.propTypes = {
+  handleAddToCart: PropTypes.func,
 };
 
 export default FoodDetails;

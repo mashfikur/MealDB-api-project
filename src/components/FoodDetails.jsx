@@ -30,6 +30,12 @@ const FoodDetails = () => {
           <h3 className="text-center font-bold text-5xl drop-shadow-lg mb-12 flex-1">
             {strMeal}{" "}
           </h3>
+
+          <div>
+            <button className="btn btn-warning  font-semibold">
+              Add to Cart
+            </button>
+          </div>
         </div>
 
         <div className="flex items-center  ">

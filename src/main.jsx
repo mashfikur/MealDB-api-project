@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         path: "/foods",
         loader: async () => {
           const res = await fetch(
-            "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
+            "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
           );
 
           const data = await res.json();

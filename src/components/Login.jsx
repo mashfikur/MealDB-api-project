@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -9,11 +9,14 @@ import { BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const [showError, setShowError] = useState("");
-  const { userSignIn ,signInWithGoogle,setLoading } = useContext(AuthContext);
+  const { userSignIn, signInWithGoogle, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const emailRef = useRef();
   const passRef = useRef();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,10 +38,10 @@ const Login = () => {
         console.log(result.user);
         e.target.reset();
         toast.success("Logged In Successfully");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        setLoading(false)
+        setLoading(false);
         toast.error(error.message);
       });
   };
@@ -69,16 +72,16 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSignIn =() => {
+  const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(() => {
-      toast.success("Logged In Successfully")
-      navigate("/")
-    })
-    .catch((error) => {
-      toast.error(`${error.message}`)
-    })
-  }
+      .then(() => {
+        toast.success("Logged In Successfully");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
+  };
 
   return (
     <div>
@@ -137,7 +140,10 @@ const Login = () => {
               </form>
               <div className="flex flex-col gap-4">
                 <div>
-                  <button onClick={handleGoogleSignIn} className="btn capitalize  shadow-xl  w-full">
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn capitalize  shadow-xl  w-full"
+                  >
                     {" "}
                     <FcGoogle className="text-xl"></FcGoogle> Sign in with
                     Google
@@ -145,7 +151,8 @@ const Login = () => {
                 </div>
                 <div>
                   <button className="btn capitalize  shadow-xl  w-full">
-                   <BsGithub className="text-xl" ></BsGithub> Sign in with Github
+                    <BsGithub className="text-xl"></BsGithub> Sign in with
+                    Github
                   </button>
                 </div>
               </div>

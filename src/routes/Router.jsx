@@ -11,69 +11,75 @@ import ErrorPage from "../components/ErrorPage";
 import Layout from "../components/Layout";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout></Layout>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-          path: "/",
-          element: <App></App>,
-        },
-        {
-          path: "/foods",
-          loader: async () => {
-            const res = await fetch(
-              "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
-            );
-  
-            const data = await res.json();
-  
-            return data;
-          },
-          element: <Foods></Foods>,
-        },
-        {
-          path: "/foods/:foodID",
-          loader: async ({ params }) => {
-            const res = await fetch(
-              `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.foodID}`
-            );
-  
-            const data = await res.json();
-  
-            return data;
-          },
-          element: <FoodDetails></FoodDetails>,
-        },
-        {
-          path: "/categories",
-          element: <Categories></Categories>,
-          loader: async () => {
-            const res = await fetch(
-              "https://www.themealdb.com/api/json/v1/1/categories.php"
-            );
-            const data = await res.json();
-  
-            return data;
-          },
-        },
-        {
-          path: "/register",
-          element: <Register></Register>,
-        },
-        {
-          path: "/login",
-          element: <Login></Login>,
-        },
-        {
-          path: "/cart",
-          element: <PrivateRoute>
-            <Cart></Cart>
-          </PrivateRoute>,
-        },
-      ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <App></App>,
+      },
+      {
+        path: "/foods",
+        loader: async () => {
+          const res = await fetch(
+            "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+          );
 
-  export default router
+          const data = await res.json();
+
+          return data;
+        },
+        element: <Foods></Foods>,
+      },
+      {
+        path: "/foods/:foodID",
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.foodID}`
+          );
+
+          const data = await res.json();
+
+          return data;
+        },
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/categories",
+        element: <Categories></Categories>,
+        loader: async () => {
+          const res = await fetch(
+            "https://www.themealdb.com/api/json/v1/1/categories.php"
+          );
+          const data = await res.json();
+
+          return data;
+        },
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/cart",
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);
+
+export default router;

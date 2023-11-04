@@ -5,7 +5,7 @@ import useMainContext from "../hooks/useMainContext";
 
 const FoodDetails = () => {
   const details = useLoaderData();
-  const {handleAddToCart}=useMainContext()
+  const { handleAddToCart } = useMainContext();
   const foodDetail = details.meals[0];
   const {
     idMeal,
@@ -23,6 +23,7 @@ const FoodDetails = () => {
     name: strMeal,
     image: strMealThumb,
     category: strCategory,
+    area: strArea,
   };
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,7 +33,7 @@ const FoodDetails = () => {
     <div className="container mx-auto">
       <div className="my-4">
         <div className=" flex items-center">
-          <Link to={"/foods"}>
+          <Link to={-1}>
             <button className="btn btn-neutral flex-0 ">go back</button>
           </Link>
 

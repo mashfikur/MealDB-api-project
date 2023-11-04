@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
@@ -9,6 +9,7 @@ import { BsGithub } from "react-icons/bs";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [errorState, setErrorState] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -27,15 +28,16 @@ const Register = () => {
     // creating user
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
         e.target.reset();
+        toast.success("User Created Successfully");
 
         // updating users profile
         updateProfile(result.user, {
           displayName: name,
         })
           .then(() => {
-            toast.success("User Created Successfully");
+            navigate("/");
+            window.location.reload();
           })
           .catch((error) => {
             toast.error(`${error.message}`);

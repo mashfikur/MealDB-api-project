@@ -2,13 +2,11 @@ import Food from "./Food";
 import { AiOutlineSearch } from "react-icons/ai";
 import {  useEffect, useState } from "react";
 import axios from "axios";
-import useMainContext from "../hooks/useMainContext";
 
 const Foods = () => {
   const [serachInput, setSearchInput] = useState(null);
   const [foods, setFoods] = useState([]);
   const [foodLoading, setFoodLoading] = useState(true);
-  const {handleAddToCart}=useMainContext()
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);
@@ -84,7 +82,6 @@ const Foods = () => {
           foods.map((food) => (
             <Food
               key={food.idMeal}
-              handleAddToCart={handleAddToCart}
               food={food}
             ></Food>
           ))}

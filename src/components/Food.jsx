@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Food({ food, handleAddToCart }) {
+function Food({ food }) {
   return (
     <div className="border-2 border-yellow-700 rounded-lg p-3 shadow-xl">
       <div>
@@ -18,16 +18,13 @@ function Food({ food, handleAddToCart }) {
           alt="food-image"
         />
 
-        <div className="flex items-center justify-between px-4">
-          <button className="text-base bg-black text-white btn hover:bg-black rounded-full ">
-            <Link to={`${food.idMeal}`}>Show Details</Link>
-          </button>
-          <button
-            onClick={() => handleAddToCart(food)}
-            className="text-base bg-[#FBBD23]  text-black btn hover:bg-[#FBBD23] rounded-full "
-          >
-            <> &#10084; Favourite</>
-          </button>
+        <div className="flex items-center justify-center">
+          <Link to={`${food.idMeal}`}>
+            {" "}
+            <button className="text-base bg-black text-white btn hover:bg-black rounded-full ">
+              Show Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -36,7 +33,6 @@ function Food({ food, handleAddToCart }) {
 
 Food.propTypes = {
   food: PropTypes.object,
-  handleAddToCart: PropTypes.func,
 };
 
 export default Food;

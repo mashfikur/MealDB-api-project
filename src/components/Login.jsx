@@ -6,10 +6,12 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
+import useAxios from "../hooks/useAxios";
 
 const Login = () => {
   const [showError, setShowError] = useState("");
   const { userSignIn, signInWithGoogle, setLoading } = useContext(AuthContext);
+  const axiosCustom = useAxios();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,6 +40,15 @@ const Login = () => {
         console.log(result.user);
         e.target.reset();
         toast.success("Logged In Successfully");
+
+        // creating token
+
+        const userInfo = { uid: result.user?.uid };
+
+        axiosCustom.post("/api/v1/user/create-token", userInfo).then((res) => {
+          console.log(res.data);
+        });
+
         navigate(from, { replace: true });
       })
       .catch((error) => {

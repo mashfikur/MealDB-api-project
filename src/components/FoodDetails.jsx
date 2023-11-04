@@ -46,7 +46,7 @@ const FoodDetails = () => {
               onClick={() => handleAddToCart(foodInfo)}
               className="btn btn-warning  font-semibold"
             >
-              Favourite
+               ❤️ Favourite
             </button>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Food from "./Food";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 

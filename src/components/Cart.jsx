@@ -24,12 +24,12 @@ const Cart = () => {
   }, [currentUser]);
 
   return (
-    <div>
-      <h3 className="text-3xl mb-10 font-semibold text-center">
+    <div className="min-h-screen">
+      <h3 className="text-3xl my-10 font-semibold text-center">
         Favourite foods
       </h3>
 
-      <div className="my-12">
+      <div className="my-12 container mx-auto">
 
         {dataLoading ? (
           <div>
@@ -48,21 +48,16 @@ const Cart = () => {
               {/* head */}
               <thead>
                 <tr>
-                  <th>
-                    <label>
-                      <input type="checkbox" className="checkbox" />
-                    </label>
-                  </th>
                   <th></th>
+                  <th>Food</th>
                   <th>Name</th>
                   <th>Category</th>
-                  <th></th>
                 </tr>
               </thead>
 
               <tbody>
-                {favourites.map((data) => (
-                  <FavouriteList key={data.mealID} food={data}></FavouriteList>
+                {favourites.map((data,idx) => (
+                  <FavouriteList key={data.mealID} number={idx} food={data}></FavouriteList>
                 ))}
               </tbody>
             </table>

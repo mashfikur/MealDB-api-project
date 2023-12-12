@@ -1,16 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const FavouriteList = ({ food }) => {
+const FavouriteList = ({ food, number }) => {
   const { mealID, name, image, category, area } = food;
 
   return (
     <tr className="text-base font-semibold">
-      <th>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </th>
+      <th> {number + 1} </th>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
@@ -27,8 +23,8 @@ const FavouriteList = ({ food }) => {
       </td>
       <td>{category}</td>
       <th>
-        <Link to={`/foods/${mealID}`} >
-          <button className="btn btn-ghost btn-xs">details</button>
+        <Link to={`/foods/${mealID}`}>
+          <button className="btn btn-primary rounded-full text-base btn-sm">details</button>
         </Link>
       </th>
     </tr>
@@ -37,6 +33,7 @@ const FavouriteList = ({ food }) => {
 
 FavouriteList.propTypes = {
   food: PropTypes.object,
+  number: PropTypes.number,
 };
 
 export default FavouriteList;

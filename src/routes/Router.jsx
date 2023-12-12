@@ -9,6 +9,7 @@ import Foods from "../components/Foods";
 import App from "../App";
 import ErrorPage from "../components/ErrorPage";
 import Layout from "../components/Layout";
+import SingleCategory from "../pages/SingleCategory";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
 
           return data;
         },
+      },
+      {
+        path: "/category/:id/foods",
+        element: <SingleCategory></SingleCategory>,
       },
       {
         path: "/register",

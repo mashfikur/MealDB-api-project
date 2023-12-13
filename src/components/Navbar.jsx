@@ -52,7 +52,7 @@ const Navbar = () => {
               <NavLink to="/categories">Categories</NavLink>
             </ul>
           </div>
-          <a className=" capitalize font-semibold text-sm md:text-2xl text-white  lg:text-3xl">
+          <a className=" capitalize font-light text-sm md:text-2xl text-white  lg:text-3xl">
             [ FooDictionary ]
           </a>
         </div>

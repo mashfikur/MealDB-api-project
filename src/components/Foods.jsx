@@ -28,7 +28,7 @@ const Foods = () => {
   });
 
   return (
-    <div className="text-2xl my-8 text-center font-medium container mx-auto">
+    <div className="text-2xl my-8 text-center font-medium container mx-auto min-h-screen">
       <div className="flex items-center justify-center relative">
         <div className="relative">
           <div className="absolute top-3 left-3">
@@ -38,7 +38,7 @@ const Foods = () => {
             onChange={handleChange}
             type="text"
             placeholder="Search..."
-            className="input focus:outline-none input-bordered rounded-full pl-12 w-full  px-36"
+            className="input focus:outline-none input-bordered rounded-full pl-12 w-full  "
           />
         </div>
       </div>
@@ -52,17 +52,16 @@ const Foods = () => {
             ariaLabel="vortex-loading"
             wrapperStyle={{}}
             wrapperClass="vortex-wrapper"
-            colors={[ "yellow", "orange","brown"]}
-            
+            colors={["yellow", "orange", "brown"]}
           />
         </div>
       )}
 
       <div className="grid  px-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 gap-6">
-        {foods &&
-          foods.meals.map((food) => (
+        {foods?.meals &&
+          foods?.meals.map((food) => (
             <Food key={food.idMeal} food={food}></Food>
-          ))}
+          ))  }
       </div>
     </div>
   );

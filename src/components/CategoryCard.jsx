@@ -5,20 +5,20 @@ const CategoryCard = ({ category }) => {
   const { strCategory, strCategoryThumb, strCategoryDescription } = category;
 
   return (
-    <div className=" rounded-lg">
-      <div className="card  rounded-md h-[32rem] border-2 border-black shadow-md duration-500">
+    <div className=" rounded-lg ">
+      <div className="card  rounded-md h-[32rem] bg-inherit  duration-500">
         <figure>
           <img
-            className="w-[100%] object-cover h-60"
+            className="w-[100%] object-contain h-60"
             src={strCategoryThumb}
             alt="card"
           />
         </figure>
         <div className="card-body">
-          <h2 className=" text-center text-2xl font-semibold uppercase underline text-">
+          <h2 className=" text-center text-2xl font-semibold text-yellow-500 uppercase underline ">
             {strCategory}
           </h2>
-          <p className="text-gray-400 font-semibold">
+          <p className="text-white font-semibold opacity-70">
             {strCategoryDescription.split("").slice(0, 200)}
           </p>
         </div>

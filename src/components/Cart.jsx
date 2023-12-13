@@ -24,7 +24,7 @@ const Cart = () => {
   }, [currentUser]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen text-white">
       <h3 className="text-3xl my-10 font-semibold text-center">
         Favourite foods
       </h3>
@@ -47,7 +47,7 @@ const Cart = () => {
             <table className="table">
               {/* head */}
               <thead>
-                <tr>
+                <tr className="text-white">
                   <th></th>
                   <th>Food</th>
                   <th>Name</th>

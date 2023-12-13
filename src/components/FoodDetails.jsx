@@ -33,7 +33,7 @@ const FoodDetails = () => {
   return (
     <div className="container mx-auto">
       <div className="my-4 min-h-screen">
-        <div className=" flex items-center">
+        <div className=" flex items-center lg:flex-row flex-col gap-3 px-4  ">
           <Link to={-1}>
             <button className="btn btn-neutral rounded-full px-6 flex-0 ">
               <FaArrowLeftLong className="text-xl" />
@@ -41,7 +41,7 @@ const FoodDetails = () => {
             </button>
           </Link>
 
-          <h3 className="text-center font-bold text-5xl drop-shadow-lg mb-12 flex-1">
+          <h3 className="text-center font-bold text-5xl text-white drop-shadow-lg mb-12 flex-1">
             {strMeal}{" "}
           </h3>
 
@@ -55,10 +55,10 @@ const FoodDetails = () => {
           </div>
         </div>
 
-        <div className="flex mt-8 items-center   ">
+        <div className="flex mt-8 items-center px-4 lg:flex-row flex-col  ">
           <div className=" flex-1 ">
             <img
-              className="w-[60%] mx-auto border-4 border-warning rounded-lg"
+              className="lg:w-[60%] mx-auto border-4 border-warning rounded-lg"
               src={strMealThumb}
               alt="food-image"
             />
@@ -72,7 +72,7 @@ const FoodDetails = () => {
             </div>
           </div>
 
-          <div className=" flex-1 text-center">
+          <div className=" flex-1 text-center text-white">
             <div className="text-2xl border-t-4 border-b-4  border-warning font-light py-2 ">
               <h3>Category : {strCategory} </h3>
               <h3>Area : {strArea} </h3>
@@ -85,7 +85,7 @@ const FoodDetails = () => {
                   : ""}{" "}
               </h3>
             </div>
-            <div className="font-semibold  py-4">
+            <div className="font-semibold   py-4">
               <p>{strInstructions} </p>
             </div>
           </div>

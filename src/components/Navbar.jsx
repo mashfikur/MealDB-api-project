@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { BsCart3 } from "react-icons/bs";
+import { BsBookmarkHeartFill } from "react-icons/bs";
 
 const Navbar = () => {
   const { currentUser, userSignOut, setCurrentUser, loading } =
@@ -45,18 +46,19 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-6 "
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-6 shadow bg-base-100 rounded-box w-52 space-y-6 text-black "
             >
               <NavLink to="/">Home</NavLink>
               <NavLink to="/foods">Foods</NavLink>
+              <NavLink to="/categories">Categories</NavLink>
             </ul>
           </div>
-          <a className=" capitalize font-light md:text-2xl text-amber-700  lg:text-3xl">
+          <a className=" capitalize font-semibold text-sm md:text-2xl text-white  lg:text-3xl">
             [ FooDictionary ]
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex items-center space-x-12 text-black font-semibold text-lg">
+          <ul className="flex items-center space-x-12 text-white font-semibold text-lg">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/foods">Foods</NavLink>
             <NavLink to="/categories">Categories</NavLink>
@@ -67,10 +69,10 @@ const Navbar = () => {
             <span className="loading loading-spinner loading-lg"></span>
           ) : currentUser ? (
             <>
-              <BsCart3
+              <BsBookmarkHeartFill
                 onClick={() => navigate("/cart")}
                 className="text-xl cursor-pointer "
-              ></BsCart3>
+              ></BsBookmarkHeartFill>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">

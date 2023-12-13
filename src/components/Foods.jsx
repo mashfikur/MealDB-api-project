@@ -3,6 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Vortex } from "react-loader-spinner";
 
 const Foods = () => {
   const [serachInput, setSearchInput] = useState(null);
@@ -43,8 +44,17 @@ const Foods = () => {
       </div>
 
       {isPending && (
-        <div>
-          <p>data is loading....</p>
+        <div className="flex flex-col items-center justify-center min-h-[100vh]">
+          <Vortex
+            visible={true}
+            height="120"
+            width="120"
+            ariaLabel="vortex-loading"
+            wrapperStyle={{}}
+            wrapperClass="vortex-wrapper"
+            colors={[ "yellow", "orange","brown"]}
+            
+          />
         </div>
       )}
 

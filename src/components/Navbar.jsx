@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav className="">
-      <div className="navbar bg-base-100 border-b-2">
+      <div className="navbar bg-base-100 py-6 border-b-2">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -51,12 +51,12 @@ const Navbar = () => {
               <NavLink to="/foods">Foods</NavLink>
             </ul>
           </div>
-          <a className=" capitalize font-light texlg text-amber-700  lg:text-3xl">
+          <a className=" capitalize font-light md:text-2xl text-amber-700  lg:text-3xl">
             [ FooDictionary ]
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal flex items-center space-x-12 text-amber-700 font-semibold text-base">
+          <ul className="flex items-center space-x-12 text-amber-700 font-semibold text-lg">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/foods">Foods</NavLink>
             <NavLink to="/categories">Categories</NavLink>

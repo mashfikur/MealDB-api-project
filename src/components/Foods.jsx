@@ -48,7 +48,7 @@ const Foods = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-4 mt-6 gap-6">
+      <div className="grid  px-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 gap-6">
         {foods &&
           foods.meals.map((food) => (
             <Food key={food.idMeal} food={food}></Food>

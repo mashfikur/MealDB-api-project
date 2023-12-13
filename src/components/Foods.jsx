@@ -32,13 +32,13 @@ const Foods = () => {
       <div className="flex items-center justify-center relative">
         <div className="relative">
           <div className="absolute top-3 left-3">
-            <AiOutlineSearch></AiOutlineSearch>
+            <AiOutlineSearch className="text-black"></AiOutlineSearch>
           </div>
           <input
             onChange={handleChange}
             type="text"
             placeholder="Search..."
-            className="input focus:outline-none input-bordered rounded-full pl-12 w-full  max-w-xs"
+            className="input focus:outline-none input-bordered rounded-full pl-12 w-full  px-36"
           />
         </div>
       </div>

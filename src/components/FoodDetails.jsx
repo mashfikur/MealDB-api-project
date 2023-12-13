@@ -55,17 +55,17 @@ const FoodDetails = () => {
           </div>
         </div>
 
-        <div className="flex mt-8   ">
+        <div className="flex mt-8 items-center   ">
           <div className=" flex-1 ">
             <img
-              className="w-[70%] mx-auto border-4 border-warning rounded-lg"
+              className="w-[60%] mx-auto border-4 border-warning rounded-lg"
               src={strMealThumb}
               alt="food-image"
             />
 
             <div className="flex justify-center my-10">
               <Link to={strYoutube} target="_blank">
-                <button className="btn hover:bg-gray-600 text-white bg-red-600 duration-300 hover:text-white rounded-full px-6 ">
+                <button className="btn hover:bg-gray-600 text-white bg-red-600 duration-300 hover:text-white rounded-full px-6 border-none shadow-xl ">
                   Watch Recipe <FaYoutube className="text-xl" />
                 </button>
               </Link>

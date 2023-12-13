@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="main-bg">
       <div className="container mx-auto">
         <Navbar></Navbar>
       </div>

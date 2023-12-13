@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Food({ food }) {
   return (
-    <div className="border-2 border-yellow-700 rounded-lg p-3 shadow-xl">
+    <div className="bg-base-100  rounded-lg p-3 shadow-xl">
       <div>
-        <p className="text-xl font-medium text-orange-500 text-center">
+        <p className="text-xl font-medium text-black text-center">
           {" "}
           Food Id : {food.idMeal}{" "}
         </p>

@@ -3,7 +3,6 @@ import "../components/styles/Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
-import { BsCart3 } from "react-icons/bs";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 
 const Navbar = () => {

@@ -5,7 +5,7 @@ const Feature = ({ imageLink, title, children, reverse }) => {
     <div className="text-white">
       <div
         className={`flex flex-col ${
-          reverse ? "lg:flex-row-reverse" : ""
+          reverse ? "lg:flex-row-reverse" : "lg:flex-row"
         } gap-10  items-center`}
       >
         <div className="flex-1">
